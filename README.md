@@ -5,4 +5,6 @@ A sample dat-cheat-sheet with:
 - library code in `lib/`,
 - example unit test in `test/`.
 
-to run the program: `dart run <your-project-name>`
+to run the program: 
+`cd <your-project-name>`
+`dart run`

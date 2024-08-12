@@ -33,8 +33,8 @@ class Basic {
   // basic functions with `void`
   void useDebug() {
     // to debug use print or debugPrint or log (use built-in package by dart)
-    print('print a hello world');
-    stderr.writeln('print by stderr'); // berwarna merah
+    print('print a $fullName');
+    stderr.writeln('print height: $height by stderr'); // berwarna merah
     // tidak terlihat karena biasanya digunakan saat debugging berjalan:
     developer.log('example log1', name: 'basic.useDebug.print');
   }
@@ -74,5 +74,69 @@ class Basic {
     childrenAges.forEach((item) {
       print('Your age children is $item');
     });
+  }
+
+  void errorHandling(dynamic division) {
+    // use dynamic to make sure program could catch error
+    int? result;
+    try {
+      result = 200 ~/ division;
+    } catch (e) {
+      print('Error: ${e.toString()}');
+    } finally {
+      print('Result: result is $result');
+    }
+  }
+
+  // use-future
+  Future<String> catchFruit() {
+    return Future.delayed(Duration(seconds: 3), () => 'Oh its Grape!');
+  }
+
+  // use-async-await
+  Future<void> fetchOrder() async {
+    print('loading to fetch the order menu...');
+    final fruitOrder = await catchFruit();
+    print('Order: $fruitOrder');
+  }
+
+  // use-stream
+  Stream<int> timer =
+      Stream.periodic(Duration(seconds: 1), (count) => count).take(10);
+}
+
+// class
+class Animal {
+  final String name;
+  final String? sounds;
+  Animal({required this.name, this.sounds});
+  void makeSounds() {
+    print('Name: ($name) try to make a sounds... ${sounds ?? ''}');
+  }
+}
+
+// inheritance class
+class Mammal extends Animal {
+  final String name;
+  final double weight;
+  final String? sounds;
+  Mammal({required this.name, required this.weight, this.sounds})
+      : super(name: name, sounds: sounds);
+  void speak() {
+    print('The animal type of mammal: ($weight) weight');
+    super.makeSounds();
+  }
+}
+
+// inheritance class
+class Reptil extends Animal {
+  final String name;
+  final double weight;
+  final String? sounds;
+  Reptil({required this.name, required this.weight, this.sounds})
+      : super(name: name, sounds: sounds);
+  void speak() {
+    print('The animal type of reptil: ($weight) weight');
+    super.makeSounds();
   }
 }

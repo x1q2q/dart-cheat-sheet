@@ -1,3 +1,4 @@
+// references: https://thetechvate.com/dart-cheat-sheet-basic/
 import 'dart:developer' as developer;
 import 'dart:io';
 // variable
@@ -27,8 +28,34 @@ String fullName = 'Mikael Bramasto';
 List<String> childrens = ['jaewangi', 'kayumanis'];
 Map<String, int> childrenAge = {'jaewangi': 12, 'kayumanis': 16};
 
-// to write comment use /__your_comments/ or /* __your_comment  */ [the last part can multilines]
+class CheatSheet {
+  void init() {
+    Basic basicCS = Basic();
+    basicCS.useDebug();
+    // args ['use-if','use-switch-case','use-loops']
+    basicCS.controlFlow('use-if');
+    basicCS.annonymousFunc();
+    // basic-create-object-class
+    Mammal goat =
+        Mammal(name: 'wedus', weight: 500.5, sounds: 'mbek-mbek-mbek');
+    goat.speak();
+    Reptil snake =
+        Reptil(name: 'sanca', weight: 15.3, sounds: 'pspsps-psssp-sstst');
+    snake.speak();
+    // basics-error-handling-&-async
+    basicCS.errorHandling(10);
+    basicCS.catchFruit().then((fruit) {
+      print('Your Order is: $fruit');
+    });
+    basicCS.fetchOrder().then((_) {
+      basicCS.timer.listen((time) {
+        print('now time is $time');
+      });
+    });
+  }
+}
 
+// to write comment use /__your_comments/ or /* __your_comment  */ [the last part can multilines]
 class Basic {
   // basic functions with `void`
   void useDebug() {
@@ -80,6 +107,7 @@ class Basic {
     // use dynamic to make sure program could catch error
     int? result;
     try {
+      // ~/ operation used to divided an int, & `/` used to divided double
       result = 200 ~/ division;
     } catch (e) {
       print('Error: ${e.toString()}');

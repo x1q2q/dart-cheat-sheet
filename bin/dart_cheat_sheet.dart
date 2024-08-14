@@ -2,8 +2,8 @@ import 'package:dart_cheat_sheet/dart_cheat_sheet.dart';
 
 void main(List<String> arguments) {
   if (arguments[0] == 'intermediate') {
-    // basic1.init();
-    print('intermediete');
+    CheatSheet3 intermediate = CheatSheet3();
+    intermediate.init();
   } else if (arguments[0] == 'advance') {
     // basic1.init();
     print('advance');

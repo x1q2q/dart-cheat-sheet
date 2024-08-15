@@ -1,6 +1,6 @@
 // programmer zaman now dart dasar `pdf`
 class CheatSheet2 {
-  void init() {
+  CheatSheet2.init() {
     Basic2 basicCS = Basic2();
     basicCS.typeData();
     basicCS.operator();

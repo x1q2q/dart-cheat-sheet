@@ -1,9 +1,13 @@
 // references https://thetechvate.com/dart-oop-cheat-sheet/
-import 'static_cheat_sheet.dart';
-import 'composite_pattern.dart';
+import 'package:dart_cheat_sheet/oop/design%20pattern/abstract_factory_pattern.dart';
+
+import 'static_method.dart';
+import 'design pattern/composite_pattern.dart';
+import 'design pattern/singleton_pattern.dart';
+import 'design pattern/factory_method_pattern.dart';
 
 class CheatSheet3 {
-  void init() {
+  CheatSheet3.init() {
     // abstract-classes
     Shape circle = Circle();
     Shape triangle = Triangle();
@@ -29,25 +33,8 @@ class CheatSheet3 {
     StaticCounter.incrementCounter();
     print(StaticCounter.counter); // output: 1
 
-    // static-cheat-sheet
-    // static variables
-    StaticCircle circle1 = StaticCircle(5);
-    StaticCircle circle2 = StaticCircle(7);
-    print(StaticCircle.pi);
-    print(StaticCircle.maxRadius);
-    print(circle1.calculateArea()); // access instance methods
-    print(circle2.calculateArea());
-
-    // static methods
-    print(MathUtils.multiply(2, 4));
-    List<int> numbers = [1, 4, 8, 112, 12];
-    print(MathUtils.addAll(numbers));
-    // accessing utitlty-classes
-    String? myText;
-    print(StringUtils.isEmpty(myText)); // output: true
-    // initalize order
-    print(InitClass.x); // output: 10
-    InitClass(); // output: 10
+    // [static_method.dart] static method
+    StaticMethod.go();
 
     // default & named constructor
     CoffeeShop obj1 = CoffeeShop();
@@ -73,9 +60,7 @@ class CheatSheet3 {
     // accessing the subclasses
     Purbalingga pbgCity = Purbalingga(250);
     pbgCity.countPopulation();
-    // singleton
-    Singleton.instance; // print the instance
-    print(primeNumbers);
+
     // callable class
     var add = Adder();
     print(add(12, 10));
@@ -103,42 +88,17 @@ class CheatSheet3 {
     // proxy pattern
     Proxy proxy = Proxy();
     proxy.request();
-    // using composite pattern in another file
-    final project = TaskGroup('Mobile App Development');
+    // [compoiste_pattern.dart] composite pattern
+    CompositePattern.go();
 
-    final planning = TaskGroup('Planning Phase');
-    planning.addSubtask(Task('Market Research', 10));
-    planning.addSubtask(Task('Define MVP', 5));
+    // [singleton_pattern.dart] singleton pattern
+    SingletonPattern.go();
 
-    final design = TaskGroup('Design Phase');
-    design.addSubtask(Task('Create Wireframes', 8));
-    design.addSubtask(Task('Design UI', 15));
+    // [abstract_factory_pattern.dart] abstract factory pattern
+    AbstractFactoryPattern.go();
 
-    final development = TaskGroup('Development Phase');
-    final frontend = TaskGroup('Frontend Development');
-    frontend.addSubtask(Task('Implement UI', 40));
-    frontend.addSubtask(Task('Integrate APIs', 20));
-
-    final backend = TaskGroup('Backend Development');
-    backend.addSubtask(Task('Design Database', 10));
-    backend.addSubtask(Task('Implement Server Logic', 30));
-
-    development.addSubtask(frontend);
-    development.addSubtask(backend);
-
-    final testing = TaskGroup('Testing Phase');
-    testing.addSubtask(Task('Unit Testing', 15));
-    testing.addSubtask(Task('Integration Testing', 10));
-    testing.addSubtask(Task('User Acceptance Testing', 5));
-
-    project.addSubtask(planning);
-    project.addSubtask(design);
-    project.addSubtask(development);
-    project.addSubtask(testing);
-
-    project.display();
-
-    print('\nTotal estimated time: ${project.estimatedTime} hours');
+    // [factory_method_pattern.dart] factory method pattern
+    FactoryMethodPattern.go();
   }
 }
 
@@ -296,15 +256,6 @@ class LazyInit {
   void initialize() {
     description = 'Initialized';
   }
-}
-
-// singleton pattern
-// singleton pattern restrict a class to a single instance and provides a global point of access to it
-class Singleton {
-  Singleton._privateConstructor() {
-    print('its been initialized');
-  }
-  static final Singleton instance = Singleton._privateConstructor();
 }
 
 // type aliases

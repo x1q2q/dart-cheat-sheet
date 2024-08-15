@@ -3,11 +3,34 @@
 /* static adalah keyword atau kata kunci untuk mendefinisikan member/anggota dari sebuah class
 termasuk variable atau methods yang termasuk dalam class tersebut dan bukan instansiasi dari class */
 
+class StaticMethod {
+  StaticMethod.go() {
+    // static variables
+    StaticCircle circle1 = StaticCircle(5);
+    StaticCircle circle2 = StaticCircle(7);
+    print(StaticCircle.pi);
+    print(StaticCircle.maxRadius);
+    print(circle1.calculateArea()); // access instance methods
+    print(circle2.calculateArea());
+
+    // static methods
+    print(MathUtils.multiply(2, 4));
+    List<int> numbers = [1, 4, 8, 112, 12];
+    print(MathUtils.addAll(numbers));
+    // accessing utitlty-classes
+    String? myText;
+    print(StringUtils.isEmpty(myText)); // output: true
+
+    // initalize order
+    print(InitClass.x); // output: 10
+    InitClass(); // output: 10
+  }
+}
+
 /* [1]. static variables
 dengan static variable, dapat dibagikan di antara semua instance class. static variable di-instansiasi
 hanya sekali & dapat mempertahankan nilai dari variable tersebut. dapat mengakses variable tersebut
 tanpa memanggil kelas terlebih dahulu (tanpa instance class)*/
-
 class StaticCircle {
   static double pi = 3.14;
   static int maxRadius = 10;

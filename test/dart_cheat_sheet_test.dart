@@ -1,4 +1,4 @@
-import 'package:dart_cheat_sheet/dart_cheat_sheet.dart';
+import 'package:dart_cheat_sheet/index.dart';
 import 'package:test/test.dart';
 
 void main() {

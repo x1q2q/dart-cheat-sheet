@@ -1,5 +1,5 @@
 // references https://thetechvate.com/dart-oop-cheat-sheet/
-import 'package:dart_cheat_sheet/oop/design%20pattern/abstract_factory_pattern.dart';
+import 'package:dart_cheat_sheet/intermediate/design%20pattern/abstract_factory_pattern.dart';
 
 import 'static_method.dart';
 import 'design pattern/composite_pattern.dart';

@@ -1,4 +1,4 @@
-import 'package:dart_cheat_sheet/dart_cheat_sheet.dart';
+import 'package:dart_cheat_sheet/index.dart';
 
 void main(List<String> arguments) {
   // basic1
@@ -16,11 +16,14 @@ void main(List<String> arguments) {
     case 'intermediate2':
       CheatSheet4.init();
       break;
-    case 'advance1':
+    case 'intermediate3':
       CheatSheet5.init();
       break;
-    case 'advance2':
+    case 'advance1':
       CheatSheet6.init();
+      break;
+    case 'advance2':
+      CheatSheet7.init();
       break;
     default:
       basic1.init();

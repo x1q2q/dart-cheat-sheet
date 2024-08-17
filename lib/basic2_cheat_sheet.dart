@@ -10,6 +10,12 @@ class CheatSheet2 {
     basicCS.forInNullable();
     basicCS.highOrderFunc();
   }
+  static int factorialRecursive(int val) {
+    if (val <= 1) {
+      return val;
+    }
+    return val * factorialRecursive(val - 1);
+  }
 }
 
 class Basic2 {
@@ -187,14 +193,8 @@ adalah ${luasSegitiga(tinggi.toInt(), alas.toInt())}''';
     // return 3*2*1
 
     // with recursive function
-    int factorialRecursive(int val) {
-      if (val <= 1) {
-        return val;
-      }
-      return val * factorialRecursive(val - 1);
-    }
 
-    print(factorialRecursive(4));
+    print(CheatSheet2.factorialRecursive(4));
     // return 4*3*2*1
   }
 }

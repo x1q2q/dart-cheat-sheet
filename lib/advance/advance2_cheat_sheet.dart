@@ -1,3 +1,3 @@
-class CheatSheet7 {
-  CheatSheet7.init() {}
+class CheatSheet8 {
+  CheatSheet8.init() {}
 }

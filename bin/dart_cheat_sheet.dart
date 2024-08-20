@@ -17,13 +17,18 @@ void main(List<String> arguments) {
       CheatSheet4.init();
       break;
     case 'intermediate3':
+      // dart-generic
       CheatSheet5.init();
       break;
-    case 'advance1':
+    case 'intermediate4':
+      // dart-collection
       CheatSheet6.init();
       break;
-    case 'advance2':
+    case 'advance1':
       CheatSheet7.init();
+      break;
+    case 'advance2':
+      CheatSheet8.init();
       break;
     default:
       basic1.init();

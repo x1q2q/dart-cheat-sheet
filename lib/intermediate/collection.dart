@@ -4,7 +4,6 @@
 // list, set => subclass/children from iterable
 
 import 'dart:collection';
-import 'dart:math';
 
 class CheatSheet6 {
   CheatSheet6.init() {
@@ -60,7 +59,7 @@ class CheatSheet6 {
 
     // Linked Hash Set
     // set is collection that contain a bunch of unique data that:
-    // when we adding the data is exist (same) the automatically ignore
+    // when we adding the data is exist (same) the automatically ignore (prevent from duplicate data)
     // when we create Set, default implementation from Set itself is LinkedHashSet classes
     // Linked Hash Set code
     final furnitureSet = <String>{}; // LinkedHashSet<String>();

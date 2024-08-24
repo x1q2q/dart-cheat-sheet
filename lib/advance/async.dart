@@ -16,6 +16,8 @@
 // `synchronous` is code program that run in sequential, and waiting unting the process is done.
 // `asynchronous` mean code programm means when our program code runs and we don't need
 // to wait for the code execution to finish, we can continue to the next stage of the program code.
+import 'dart:async';
+
 class CheatSheet8 {
   CheatSheet8.init() {
     // `dart async` is to support concurrency & asnc features
@@ -85,6 +87,19 @@ class CheatSheet8 {
         .then((val) => print(val))
         .catchError((error) => print("error wiht message ${error.message}"))
         .whenComplete(() => print("all is done"));
+
+    // Sream Subscription: code
+    Stream<String> flow = stream();
+    StreamSubscription<String> listen = flow.listen((data) => print(data));
+    // Double Stream Subscription
+    // would be throw an error
+    // StreamSubscription<String> listen2 = flow.listen((data) => print(data));
+
+    // Stram Subscription Method: code
+    // this method would replace code above
+    listen.onData((data) => print('Stram suscription $data'));
+    listen.onDone(() => print('Stream subscription done'));
+    // Stream Filter Method: code
   }
 }
 
@@ -111,8 +126,67 @@ Future<String> getName(String name) {
   });
 }
 
-
 // `Try Catch Finally`
 // use Future, we can use try-catch-finally command
-// but instead, we can combine a few methods in future to achieve 
-// something like try-catch-finally use then(), catchError(), & whenComplete() method 
+// but instead, we can combine a few methods in future to achieve
+// something like try-catch-finally use then(), catchError(), & whenComplete() method
+
+// `Stream`
+// Future is object asyn that used for create an object
+// dart serve a stream type data: Future that can be more than one value.
+// `Stream Constructor`
+// there is a bunch of constructor for stream such as:
+// empty() => create empty Stream
+// value(T) => create Stram<T> with one value
+// fromFuture(Future<T>) for create Stream<T> with one value from Future<T>
+// fromFutures(Iterable<Future<T>>) for create Stream<T> with few value from IterableFuture<T>
+// fromIterable(Iterable<T>) for create Stream<T> with a few value from Iterable<T>
+// periodic(duration, computation) for create Stream<T> by periodic
+
+// Stream: code
+Stream<String> stream() {
+  return Stream.periodic(Duration(seconds: 2), (i) {
+    if (i % 2 == 0) {
+      return "$i : Genap";
+    } else {
+      return "$i: Ganjil";
+    }
+  }).take(4);
+}
+
+// `Stream Subscription`
+// unlike Future, in Stream, cause shape of data like data flow, we need to subscribe
+// if we want to know data that exist in stream.
+// Stream only can be subscribe once. if we want to more subscribe, to do the same stream,
+// automatically would be error
+// to subscribe a Stream, we need a listen(callback) method, 
+// automatically return StreamSubscription<T> object
+
+// `Stream subscription Method`
+// Stram subscription has a bunch of method, like Future
+// onData(callback) when stream receive the data
+// onError(callback) when stream error
+// onDone(callback) when stream done
+// cancel() cancell a subscription
+// pause() to temporary stop the subscription
+// resume() continue subscription
+
+// `Stream Listen`
+// when we create Strem Subscription use Stream.listen(callback) method, 
+// that callback paramater automatically be onData callback in Subscription Stream
+// if we want to onData(callback) again, so automatically listen() callback will be replaced 
+
+// `Transform Stream`
+// stream has a bunch method that we can use to manipulate data Stream 
+// before sending to Stream Subscription. such as: filtering, transformation, etc.
+// `Filter Method`
+// take(int): Stream<T> to take a Stream data in certain value 
+// takeWhile(test): Stream<T> to take Stream data while test condition still ok
+// where(test): Stream<T> to just take Stream data if matched test condition
+// lastWhere(test): Future<T> to take last one Stream data with the matched test condition
+// firstWhere(test): Future<T> to take first one Stream data with the matched test condition 
+// drain(): Future<T> to ignore all the Stream data, but send signal when its done
+// distinct(): Stream<T> to ignore all the same data with previous data
+// skip(int): Stream<T> to ignore the initial amount of data
+// skipeWhile(test): Stream<T> to ignore the initial amount when the condition test still ok
+

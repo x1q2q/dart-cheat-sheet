@@ -2,6 +2,16 @@ import 'package:dart_cheat_sheet/index.dart';
 import 'package:dart_cheat_sheet/intermediate/unit_test.dart';
 import 'package:test/test.dart';
 
+// future test
+Future<String> getName() async {
+  return 'Arafik Nurf';
+}
+
+// future-matcher
+Future<String> getCallName() async {
+  return Future.delayed(Duration(seconds: 2), () => 'Rafik Bojes');
+}
+
 void main() {
   String appName = "";
   // setup data
@@ -28,6 +38,25 @@ void main() {
       expect(CheatSheet2.factorialRecursive(4), equals(24));
     }, skip: "still developing the feature");
   });
+  // future-test
+  test("Future Test", () async {
+    final name = await getName();
+    expect(name, 'Arafik Nurf');
+  });
+  // future-matcher
+  test("Future Matcher", () {
+    final name = getCallName();
+    expect(name, completion(equals('Rafik Bojes')));
+  });
+  // stream-matcher
+  test("Stream Test", () {
+    final stream = Stream.periodic(Duration(seconds: 1), (i) => i).take(5);
+    expect(
+        stream,
+        emitsInOrder(
+            [emits(0), emits(1), emits(2), emits(3), emits(4), emitsDone]));
+  });
+
   tearDown(() {
     print('app name is: $appName');
   });
